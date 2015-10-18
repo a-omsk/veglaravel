@@ -1,27 +1,34 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Location;
 use Request;
 
-class LocationController extends Controller {
+class LocationController extends Controller
+{
 
-    public function index($city) {
-      return Location::where('city', $city)
-        ->get();
+    public function index($city)
+    {
+        return Location::getLocationsByCity($city);
     }
 
-    public function show($city, $id) {
-      return Location::where('city', $city)->where('id', $id)
-        ->get();
+    public function all()
+    {
+        return Location::all();
     }
 
-    public function create() {
+    public function show($city, $id)
+    {
+        return collect(Location::getLocationsByCity($city))->where('id', (int)$id)->values();
+    }
+
+    public function create()
+    {
         return view('create');
     }
 
-    public function store() {
+    public function store()
+    {
 
         $input = Request::all();
 
@@ -30,8 +37,29 @@ class LocationController extends Controller {
         return $input;
     }
 
-    public function get() {
-        $coordinates = Location::lists('coordinates');
-        return $coordinates;
+    public function update($city, $id)
+    {
+
+        $location = Location::find($id);
+
+        $location->name = Request::input('name');
+        $location->type = Request::input('type');
+        $location->time = Request::input('time');
+        $location->specification = Request::input('specification');
+        $location->description = Request::input('description');
+        $location->price = Request::input('price');
+        $location->address = Request::input('address');
+        $location->save();
+
+        return $location;
+
+    }
+
+    public function delete($city, $id)
+    {
+        Location::destroy($id);
+
+        return 'Location deleted';
+
     }
 }
