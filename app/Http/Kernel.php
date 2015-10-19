@@ -16,7 +16,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
 // 		'App\Http\Middleware\VerifyCsrfToken',
-		// 'Barryvdh\Cors\Middleware\HandleCors',
+		'Barryvdh\Cors\Middleware\HandleCors',
 	];
 
 	/**
@@ -28,6 +28,8 @@ class Kernel extends HttpKernel {
 		'auth' => 'App\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
+		'jwt.auth' => '\Tymon\JWTAuth\Middleware\GetUserFromToken',
+        'jwt.refresh' => '\Tymon\JWTAuth\Middleware\RefreshToken',
 	];
 
 }
