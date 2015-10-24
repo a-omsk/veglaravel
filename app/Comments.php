@@ -16,6 +16,11 @@ class Comments extends Model {
     	return $this->belongsTo('User');
   	}
 
+	public function location()
+	{
+		return $this->belongsTo('Location');
+	}
+
   	public function product()
   	{
     	return $this->belongsTo('App\Location');
