@@ -9,15 +9,15 @@ class Location extends Model
     protected $fillable = [
         //'coordinates',
         'marker_id',
+        'user_id',
         'name',
         'type',
-        'time',
+        'business_time',
         'rating',
         'specification',
         'description',
         'price',
         'address',
-        'created_by',
         'voters'
     ];
 
@@ -41,7 +41,7 @@ class Location extends Model
     public static function countComments($id)
     {
         $comments = \App\Comment::where('id_location', '=', $id);
-        
+
         $location = Location::find($id);
 
         $location->rating = ceil($comments->avg('rating')/0.5)*0.5;
