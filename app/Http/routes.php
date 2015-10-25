@@ -13,6 +13,8 @@
 
 /*  Basic routing */
 
+Route::group(['prefix' => 'api'], function(){
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('login', 'HomeController@index');
@@ -75,6 +77,12 @@ Route::post('/authenticate', function () {
    }
 
    return Response::json(compact('token'));
+});
+
+Route::get('docs', function(){
+    return View::make('docs.api.v1.index');
+});
+
 });
 
 Route::controllers([

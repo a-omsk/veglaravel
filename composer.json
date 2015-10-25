@@ -8,7 +8,8 @@
 		"laravel/framework": "5.0.*",
 		"illuminate/html": "^5.0",
 		"tymon/jwt-auth": "0.5.*",
-		"barryvdh/laravel-cors": "0.4.x@dev"
+		"barryvdh/laravel-cors": "0.4.x@dev",
+		"f2m2/apidocs": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

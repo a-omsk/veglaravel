@@ -138,6 +138,7 @@ return [
         'Illuminate\Html\HtmlServiceProvider',
         'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
         'Barryvdh\Cors\CorsServiceProvider',
+		'F2m2\Apidocs\ApidocsServiceProvider',
 
 
 		/*

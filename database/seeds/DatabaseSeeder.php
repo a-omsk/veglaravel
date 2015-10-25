@@ -36,7 +36,6 @@ class LocationsAndMarkersTableSeeder extends Seeder {
 		DB::table('locations')->delete();
 
 		for ($i = 1; $i <= $numberOfMarkers; $i++) {
-
         	Marker::create([
 				'id' => $i,
 				'coordinates' => "54.97" . mt_rand(1, 69240537932) . ", " . 73.39 . mt_rand(1, 931488037111),
