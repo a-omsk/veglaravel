@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Location;
+use App\Marker;
 use Request;
 
 class LocationController extends Controller
@@ -9,7 +10,8 @@ class LocationController extends Controller
 
     public function index($city)
     {
-        return Location::getLocationsByCity($city);
+        return Marker::where('city', '=', $city)->first()->locations()->get();
+        return Marker::getMarkersWithLocations($city);
     }
 
     public function all()
