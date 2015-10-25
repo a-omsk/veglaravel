@@ -6,11 +6,11 @@
 
 * GET */api/map/{cityname}/{markerid}* - get marker with id *markerid* from city *cityname*
 
-* POST */api/map* add new location with/without new marker
+* POST */api/map* - add new location with/without new marker
 
-* PUT */api/map/{cityname}/{markerid}/{locationid}* update existing location with id *locationid*
+* PUT */api/map/{cityname}/{markerid}/{locationid}* - update existing location with id *locationid*
 
-* DELETE */api/map/{cityname}/{markerid}/{locationid}* delete existing location with id *locationid*
+* DELETE */api/map/{cityname}/{markerid}/{locationid}* - delete existing location with id *locationid*
 
 * GET */api/comments/{locationid}* - get all comments for *locationid* location
 
