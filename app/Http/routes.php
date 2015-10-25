@@ -21,7 +21,7 @@ Route::get('login', 'HomeController@index');
 
 /* Collections of locations, comments, users */
 
-Route::get('locations', 'LocationController@all');
+Route::get('map', 'LocationController@all');
 
 Route::get('comments', 'CommentController@index');
 
@@ -29,15 +29,15 @@ Route::get('users', 'UserController@index');
 
 /* Operations with locations */
 
-Route::get('locations/{city}', 'LocationController@index');
+Route::get('map/{city}', 'LocationController@index');
 
-Route::post('locations/', 'LocationController@store');
+Route::post('map/', 'LocationController@store');
 
-Route::get('locations/{city}/{id}', 'LocationController@show');
+Route::get('map/{city}/{id}', 'LocationController@show');
 
-Route::put('locations/{city}/{id}', 'LocationController@update');
+Route::put('map/{city}/{id}', 'LocationController@update');
 
-Route::delete('locations/{city}/{id}', 'LocationController@delete');
+Route::delete('map/{city}/{id}', 'LocationController@delete');
 
 /* Operations with comments */
 
