@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Location;
 use App\Marker;
+use App\Comment;
 
 
 class DatabaseSeeder extends Seeder {
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder {
 		Model::unguard();
 
 		$this->call('LocationsAndMarkersTableSeeder');
+		$this->call('CommentsTableSeeder');
 	}
 
 }
@@ -58,4 +60,25 @@ class LocationsAndMarkersTableSeeder extends Seeder {
 		}
 
     }
+}
+
+class CommentsTableSeeder extends Seeder {
+
+    public function run()
+    {
+		$numberOfComments = 150;
+		$locations = Location::all();
+
+		DB::table('comments')->delete();
+
+		for ($i = 1; $i <= $numberOfComments; $i++) {
+        	Comment::create([
+				'user_id' => 1,
+				'location_id' => $locations->shuffle()->first()->id,
+				'body' => 'Quibusdam illum, nibh justo orci leo perferendis alias ' .
+				'aliquid. Earum quia. Nunc! Assumenda placeat excepturi! Inceptos congue!',
+				'rating' => mt_rand(1, 5)
+			]);
+		}
+	}
 }

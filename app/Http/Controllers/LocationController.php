@@ -20,7 +20,7 @@ class LocationController extends Controller
 
     public function show($city, $id)
     {
-        return Marker::getMarkersWithLocationsByCity($city)->where('id', (int)$id);
+        return Marker::getMarkerWithFullInfo($city, (int)$id);
     }
 
     public function store()

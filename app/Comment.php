@@ -6,7 +6,7 @@ class Comment extends Model {
 
 	protected $fillable = [
         'location_id',
-        'author',
+        'user_id',
         'rating',
         'body'
     ];

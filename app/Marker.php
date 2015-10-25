@@ -18,12 +18,20 @@ class Marker extends Model
 
     public static function getMarkersByCity ($city)
     {
-        return $markers = Marker::where('city', '=', $city)->get();
+        return Marker::where('city', '=', $city)->get();
     }
 
     public static function getMarkersWithLocationsByCity ($city)
     {
-        return $markers = Marker::with('locations')->where('city', '=', $city)->get();
+        return Marker::with('locations')->where('city', '=', $city)->get();
+    }
+
+    public static function getMarkerWithFullInfo ($city, $id){
+        return Marker::with('locations')
+            ->with('locations.comments')
+            ->where('city', '=', $city)
+            ->where('id', '=', (int) $id)
+            ->get();
     }
 
     public static function createNew($input)

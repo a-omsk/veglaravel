@@ -30,7 +30,7 @@ class Location extends Model
     }
 
     public function comments() {
-        return $this->hasMany('App\Comments');
+        return $this->hasMany('App\Comment');
     }
 
     public static function createNew($input)

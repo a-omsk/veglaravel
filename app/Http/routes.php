@@ -39,15 +39,15 @@ Route::delete('locations/{city}/{id}', 'LocationController@delete');
 
 /* Operations with comments */
 
-Route::get('locations/{city}/{id}/comments', 'CommentsController@show');
+Route::get('locations/{city}/{id}/comments', 'CommentController@show');
 
-Route::post('comments/post', 'CommentsController@store');
+Route::post('comments/post', 'CommentController@store');
 
-Route::get('locations/{city}/{id}/comments/{comment_id}', 'CommentsController@index');
+Route::get('locations/{city}/{id}/comments/{comment_id}', 'CommentController@index');
 
-Route::put('locations/{city}/{id}/comments/{comment_id}', 'CommentsController@update');
+Route::put('locations/{city}/{id}/comments/{comment_id}', 'CommentController@update');
 
-Route::delete('locations/{city}/{id}/comments/{comment_id}', 'CommentsController@delete');
+Route::delete('locations/{city}/{id}/comments/{comment_id}', 'CommentController@delete');
 
 /* Operations with users */
 
