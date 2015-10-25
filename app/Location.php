@@ -34,6 +34,11 @@ class Location extends Model
         return $this->hasMany('App\Comments');
     }
 
+    public static function createNew($input)
+    {   /* TODO: Complete this method */
+        return $input;
+    }
+
 
     /**
      * @param $id

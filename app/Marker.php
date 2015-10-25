@@ -16,21 +16,23 @@ class Marker extends Model
         return $this->hasMany('App\Location');
     }
 
-    public $test = 0;
+    public static function getMarkersByCity ($city)
+    {
+        return $markers = Marker::where('city', '=', $city)->get();
+    }
 
-    public static function getMarkersWithLocations ($city){
-        $markers =
-             Marker::where('city', '=', $city)->first();//->toArray();
+    public static function getMarkersWithLocationsByCity ($city)
+    {
+        return $markers = Marker::with('locations')->where('city', '=', $city)->get();
+    }
 
-        return $markers->locations()->get();//->locations()->get()->toArray();
-        return array_map(function($marker){
-            //return $marker;
-            return [
-                'id' => $marker['id'],
-                'city' => $marker['city'],
-                'coordinates' => $marker['coordinates'],
-                'locations' => 0
-            ];
-        }, $markers);
+    public static function createNew($input)
+    {
+        $markerData = [
+            'city'=> $input['city'],
+            'coordinates'=> $input['coordinates'],
+        ];
+
+        return Marker::create($markerData);
     }
 }

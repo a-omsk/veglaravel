@@ -10,8 +10,7 @@ class LocationController extends Controller
 
     public function index($city)
     {
-        return Marker::where('city', '=', $city)->first()->locations()->get();
-        return Marker::getMarkersWithLocations($city);
+        return Marker::getMarkersWithLocationsByCity($city);
     }
 
     public function all()
@@ -21,27 +20,23 @@ class LocationController extends Controller
 
     public function show($city, $id)
     {
-        return collect(Location::getLocationsByCity($city))->where('id', (int)$id)->values();
-    }
-
-    public function create()
-    {
-        return view('create');
+        return Marker::getMarkersWithLocationsByCity($city)->where('id', (int)$id);
     }
 
     public function store()
-    {
+    {    /* TODO: Complete this method */
+        
+        if (!Request::input('marker_id')) {
+            $newMarker = Marker::createNew(Request::all());
+        } else {
+            return Location::createNew(Request::all());
+        }
 
-        $input = Request::all();
-
-        Location::create($input);
-
-        return $input;
     }
 
     public function update($city, $id)
     {
-
+         /* TODO: Rewrite this method */
         $location = Location::find($id);
 
         $location->name = Request::input('name');
@@ -54,7 +49,6 @@ class LocationController extends Controller
         $location->save();
 
         return $location;
-
     }
 
     public function delete($city, $id)
