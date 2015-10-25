@@ -1,20 +1,20 @@
 <?php namespace App\Http\Controllers;
 
-use App\Comments;
+use App\Comment;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Location;
 use Request;
 
-class CommentsController extends Controller {
+class CommentController extends Controller {
 
     public function index() {
-        $comments = \App\Comments::all();
+        $comments = \App\Comment::all();
         return $comments;
     }
 
     public function show($city, $id) {
-                $comments = \App\Comments::where('id_location', '=', $id)
+                $comments = \App\Comment::where('id_location', '=', $id)
                     ->get();
                 return $comments;
     }
@@ -26,7 +26,7 @@ class CommentsController extends Controller {
         $id = Request::input('id_location');
         $rating = Request::input('rating');
 
-        Comments::create($input);
+        Comment::create($input);
 
         Location::countComments($id);
 

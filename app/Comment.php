@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comments extends Model {
+class Comment extends Model {
 
 	protected $fillable = [
-        'id_location',
+        'location_id',
         'author',
         'rating',
         'body'
@@ -13,17 +13,11 @@ class Comments extends Model {
 
     public function user()
   	{
-    	return $this->belongsTo('User');
+    	return $this->belongsTo('App\User');
   	}
 
 	public function location()
 	{
-		return $this->belongsTo('Location');
+		return $this->belongsTo('App\Location');
 	}
-
-  	public function product()
-  	{
-    	return $this->belongsTo('App\Location');
-  	}
-
 }

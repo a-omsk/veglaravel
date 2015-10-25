@@ -21,7 +21,7 @@ Route::get('login', 'HomeController@index');
 
 Route::get('locations', 'LocationController@all');
 
-Route::get('comments', 'CommentsController@index');
+Route::get('comments', 'CommentController@index');
 
 Route::get('users', 'UserController@index');
 
@@ -29,7 +29,7 @@ Route::get('users', 'UserController@index');
 
 Route::get('locations/{city}', 'LocationController@index');
 
-Route::post('locations/post', 'LocationController@store');
+Route::post('locations/', 'LocationController@store');
 
 Route::get('locations/{city}/{id}', 'LocationController@show');
 

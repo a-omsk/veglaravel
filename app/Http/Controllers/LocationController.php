@@ -24,19 +24,20 @@ class LocationController extends Controller
     }
 
     public function store()
-    {    /* TODO: Complete this method */
-        
+    {
         if (!Request::input('marker_id')) {
             $newMarker = Marker::createNew(Request::all());
-        } else {
-            return Location::createNew(Request::all());
+
+            Request::merge(['marker_id' => (integer) $newMarker->id]);
+
+            return Location::createNew(Request::except('city', 'coordinates'));
         }
 
+        return Location::createNew(Request::all());
     }
 
     public function update($city, $id)
     {
-         /* TODO: Rewrite this method */
         $location = Location::find($id);
 
         $location->name = Request::input('name');

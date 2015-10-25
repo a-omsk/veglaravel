@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnMarkerIdToLocationsTable extends Migration {
+class CreateLocationIdForeignKeyInCommentsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,12 @@ class AddColumnMarkerIdToLocationsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('locations', function(Blueprint $table)
+		Schema::table('comments', function(Blueprint $table)
 		{
-			//
-			$table->integer('marker_id')->unsigned();
+			$table->integer('location_id')->unsigned();
+			$table->foreign('location_id')
+				->references('id')->on('locations')
+				->onDelete('cascade');//
 		});
 	}
 
@@ -26,11 +28,7 @@ class AddColumnMarkerIdToLocationsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('locations', function(Blueprint $table)
-		{
-			//
-			$table->dropColumn('marker_id');
-		});
+		//
 	}
 
 }

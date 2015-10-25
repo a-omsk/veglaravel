@@ -17,7 +17,6 @@ class Location extends Model
         'description',
         'price',
         'address',
-        //'city',
         'created_by',
         'voters'
     ];
@@ -35,29 +34,19 @@ class Location extends Model
     }
 
     public static function createNew($input)
-    {   /* TODO: Complete this method */
-        return $input;
+    {
+        return Location::create($input);
     }
 
-
-    /**
-     * @param $id
-     * @param $value
-     * @return float
-     */
     public static function countComments($id)
     {
-        $comments = \App\Comments::where('id_location', '=', $id);
-
+        $comments = \App\Comment::where('id_location', '=', $id);
+        
         $location = Location::find($id);
 
-        $avgRating = ceil($comments->avg('rating')/0.5)*0.5;
+        $location->rating = ceil($comments->avg('rating')/0.5)*0.5;
 
-        $voters = $comments->count();
-
-        $location->rating = $avgRating;
-
-        $location->voters = $voters;
+        $location->voters = $comments->count();
 
         $location->save();
 

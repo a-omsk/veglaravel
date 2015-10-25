@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnMarkerIdToLocationsTable extends Migration {
+class CreateBussinesTimeInLocationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,8 +14,8 @@ class AddColumnMarkerIdToLocationsTable extends Migration {
 	{
 		Schema::table('locations', function(Blueprint $table)
 		{
-			//
-			$table->integer('marker_id')->unsigned();
+			$table->dropColumn('time');
+			$table->string('bussines_time')->nullable();
 		});
 	}
 
@@ -26,11 +26,8 @@ class AddColumnMarkerIdToLocationsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('locations', function(Blueprint $table)
-		{
-			//
-			$table->dropColumn('marker_id');
-		});
+		$table->dropColumn('bussines_time');
+		$table->string('time');
 	}
 
 }
