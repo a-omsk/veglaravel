@@ -66,10 +66,10 @@ return [
 
 		'pgsql' => [
 			'driver'   => 'pgsql',
-			'host'     => env('DB_HOST', 'localhost'),
-			'database' => env('DB_DATABASE', 'veg'),
-			'username' => env('DB_USERNAME', 'laravel'),
-			'password' => env('DB_PASSWORD', 'yourmom'),
+			'host'     => env('DB_HOST', 'db'),
+			'database' => env('DB_DATABASE', 'laravel'),
+			'username' => env('DB_USERNAME', 'docker'),
+			'password' => env('DB_PASSWORD', 'docker'),
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
