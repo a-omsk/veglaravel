@@ -1,13 +1,29 @@
 # API
-## version 1
+## version 0.1.1
 ### veglaravel/API.md
 
-* */api/map/{cityname}* - returns markers list of *cityname* city
+* GET */api/map/{cityname}* - returns markers list of *cityname* city
 
-* */api/map/{cityname}/{markerid}* - returns marker with id *markerid* from city *cityname*
+* GET */api/map/{cityname}/{markerid}* - returns marker with id *markerid* from city *cityname*
 
-* */api/comments/{locationid}* - returns comments for *locationid* location
+* POST */api/map* post new location with/without new marker
 
-* */api/users* - returns list of all users
+* PUT */api/map/{cityname}/{markerid}/{locationid}* update existing location with id *locationid*
 
-* */api/users/{id}* - returns info for user with id {id}
+* DELETE */api/map/{cityname}/{markerid}/{locationid}* delete existing location with id *locationid*
+
+* GET */api/comments/{locationid}* - returns all comments for *locationid* location
+
+* POST */api/comments/{locationid}* - post new comment for *locationid* location 
+
+* PUT */api/comments/{locationid}* - update existing comment of *locationid* location 
+
+* DELETE */api/comments/{locationid}* - delete existing comment of *locationid* location 
+
+* GET */api/users* - returns list of all users
+
+* GET */api/users/{id}* - returns info for user with id {id}
+
+* PUT */api/users/{id}* - update existing user with id {id}
+
+* DELETE */api/users/{id}* - delete existing user with id {id} 
