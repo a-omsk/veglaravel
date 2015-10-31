@@ -29,11 +29,13 @@ Route::get('users', 'UserController@index');
 
 /* Operations with locations */
 
-Route::get('map/{city}', 'LocationController@index');
+Route::get('map/{city}', 'LocationController@getLocations');
+
+Route::get('map/{city}/markers', 'LocationController@getMarkers');
+
+Route::get('map/{city}/{id}', 'LocationController@getSpecLocation');
 
 Route::post('map/', 'LocationController@store');
-
-Route::get('map/{city}/{id}', 'LocationController@show');
 
 Route::put('map/{city}/{id}', 'LocationController@update');
 

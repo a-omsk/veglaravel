@@ -8,17 +8,22 @@ use Request;
 class LocationController extends Controller
 {
 
-    public function index($city)
-    {
-        return Marker::getMarkersWithLocationsByCity($city);
-    }
-
     public function all()
     {
-        return Location::all();
+        return Location::getAllLocations();
     }
 
-    public function show($city, $id)
+    public function getMarkers($city)
+    {
+        return Marker::getMarkersByCity($city);
+    }
+
+    public function getLocations($city)
+    {
+        return Location::getLocationsByCity($city);
+    }
+
+    public function getSpecLocation($city, $id)
     {
         return Marker::getMarkerWithFullInfo($city, (int)$id);
     }
@@ -26,9 +31,10 @@ class LocationController extends Controller
     public function store()
     {
         if (!Request::input('marker_id')) {
+
             $newMarker = Marker::createNew(Request::all());
 
-            Request::merge(['marker_id' => (integer) $newMarker->id]);
+            Request::merge(['marker_id' => (int) $newMarker->id]);
 
             return Location::createNew(Request::except('city', 'coordinates'));
         }
@@ -42,7 +48,7 @@ class LocationController extends Controller
 
         $location->name = Request::input('name');
         $location->type = Request::input('type');
-        $location->time = Request::input('time');
+        $location->business_time = Request::input('business_time');
         $location->specification = Request::input('specification');
         $location->description = Request::input('description');
         $location->price = Request::input('price');
@@ -55,8 +61,7 @@ class LocationController extends Controller
     public function delete($city, $id)
     {
         Location::destroy($id);
-
+        
         return 'Location deleted';
-
     }
 }

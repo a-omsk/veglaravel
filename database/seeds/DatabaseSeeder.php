@@ -29,8 +29,8 @@ class LocationsAndMarkersTableSeeder extends Seeder {
     public function run()
     {
 
-		$numberOfMarkers = 20;
-		$numberOfLocations = 40;
+		$numberOfMarkers = 100;
+		$numberOfLocations = 150;
 
 		DB::table('markers')->delete();
 		DB::table('locations')->delete();
@@ -38,13 +38,14 @@ class LocationsAndMarkersTableSeeder extends Seeder {
 		for ($i = 1; $i <= $numberOfMarkers; $i++) {
         	Marker::create([
 				'id' => $i,
-				'coordinates' => "54.97" . mt_rand(1, 69240537932) . ", " . 73.39 . mt_rand(1, 931488037111),
+				'coordinates' => "54.9" . mt_rand(1, 99240537932) . ", " . 73.3 . mt_rand(1, 991488037111),
 				'city' => 'omsk'
 			]);
 		}
 
 		for ($i = 1; $i <= $numberOfLocations; $i++) {
 			Location::create([
+				'id' => $i,
 				'marker_id' => mt_rand(1, $numberOfMarkers),
 				'user_id' => 1,
 				'name' =>"Test Location №" . $i,

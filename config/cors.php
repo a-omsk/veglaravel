@@ -11,7 +11,7 @@ return array(
      | unless overridden in a specific URL configuration.
      | If you want them to apply to everything, you must define a path with *.
      |
-     | allowedOrigins, allowedHeaders and allowedMethods can be set to array('*') 
+     | allowedOrigins, allowedHeaders and allowedMethods can be set to array('*')
      | to accept any value, the allowed methods however have to be explicitly listed.
      |
      */

@@ -11,6 +11,8 @@ class Marker extends Model
         'city'
     ];
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function locations()
     {
         return $this->hasMany('App\Location');
@@ -18,19 +20,19 @@ class Marker extends Model
 
     public static function getMarkersByCity ($city)
     {
-        return Marker::where('city', '=', $city)->get();
+        return Marker::where('city', $city)->get();
     }
 
     public static function getMarkersWithLocationsByCity ($city)
     {
-        return Marker::with('locations')->where('city', '=', $city)->get();
+        return Marker::with('locations')->where('city', $city)->get();
     }
 
     public static function getMarkerWithFullInfo ($city, $id){
         return Marker::with('locations')
             ->with('locations.comments')
-            ->where('city', '=', $city)
-            ->where('id', '=', (int) $id)
+            ->where('city', $city)
+            ->where('id', (int) $id)
             ->get();
     }
 
