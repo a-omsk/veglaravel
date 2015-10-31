@@ -38,7 +38,7 @@ class LocationsAndMarkersTableSeeder extends Seeder {
 		for ($i = 1; $i <= $numberOfMarkers; $i++) {
         	Marker::create([
 				'id' => $i,
-				'coordinates' => "54.9" . mt_rand(1, 99240537932) . ", " . 73.3 . mt_rand(1, 991488037111),
+				'coordinates' => "54.9" . mt_rand(1, 99240537932) . ", " . "73.3" . mt_rand(1, 991488037111),
 				'city' => 'omsk'
 			]);
 		}

@@ -34,7 +34,7 @@ class LocationController extends Controller
 
             $newMarker = Marker::createNew(Request::all());
 
-            Request::merge(['marker_id' => (int) $newMarker->id]);
+            Request::merge(['marker_id' => (integer) $newMarker->id]);
 
             return Location::createNew(Request::except('city', 'coordinates'));
         }
@@ -61,7 +61,7 @@ class LocationController extends Controller
     public function delete($city, $id)
     {
         Location::destroy($id);
-        
+
         return 'Location deleted';
     }
 }
