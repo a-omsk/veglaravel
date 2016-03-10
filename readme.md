@@ -1,3 +1,6 @@
+Veglaravel is deprecated Please look at the [actual sails.js app implementation](https://github.com/a-omsk/vegsails).
+
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
